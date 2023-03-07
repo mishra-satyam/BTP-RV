@@ -13,13 +13,14 @@ public class MyAspect {
     public void afterThrowing(JoinPoint joinPoint) {
         System.out.println("Method: " + joinPoint.toString());
         System.out.println("args: ");
-        for (Object o :
+        for (Object o:
                 joinPoint.getArgs()) {
             System.out.println(o.toString());
         }
     }
 
-    @Before("execution(* net.vatri.ecommerce.cart.CartServiceImpl.addProduct(*, *))")
+//    @Before("execution(* net.vatri.ecommerce.controllers.CartController.addProduct(*, *))")
+    @Before("execution(* net.vatri.ecommerce.cart.CartService.addProduct(*, *))")
     public void printBefore() {
         System.out.println("MY FUNCTION STARTED .......");
     }
