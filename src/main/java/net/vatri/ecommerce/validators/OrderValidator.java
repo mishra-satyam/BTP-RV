@@ -1,5 +1,6 @@
 package net.vatri.ecommerce.validators;
 
+import net.vatri.ecommerce.cart.CartItem;
 import net.vatri.ecommerce.models.Order;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -9,7 +10,7 @@ public class OrderValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return Order.class.equals(aClass);
+        return CartItem.class.equals(aClass);
     }
 
     @Override

@@ -3,6 +3,8 @@ package net.vatri.ecommerce;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.vatri.ecommerce.cache.Cache;
 import net.vatri.ecommerce.cache.RedisCache;
+import net.vatri.ecommerce.models.User;
+import net.vatri.ecommerce.repositories.UserRepository;
 import net.vatri.ecommerce.storage.StorageProperties;
 import net.vatri.ecommerce.storage.StorageService;
 import net.vatri.ecommerce.validators.GroupValidator;
@@ -14,14 +16,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
 import org.springframework.validation.Validator;
 import redis.clients.jedis.Jedis;
 
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
-public class EcommerceStarterApplication{
+public class EcommerceStarterApplication implements CommandLineRunner{
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(EcommerceStarterApplication.class, args);
@@ -72,4 +77,17 @@ public class EcommerceStarterApplication{
         return new RedisCache(objectMapper, redisCliFactory());
     }
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public void run(String... strings) throws Exception {
+//        User user = new User();
+//        user.setName("satyam");
+//        user.setPassword("satyam");
+//        user.setId(100);
+//        user.setEmail("satyam");
+//
+//        userRepository.save(user);
+    }
 }

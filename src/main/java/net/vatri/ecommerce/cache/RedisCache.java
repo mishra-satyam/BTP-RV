@@ -47,7 +47,7 @@ public class RedisCache implements Cache{
         try {
             String jsonItem = objectMapper.writeValueAsString(item);
             String out = jedis.set(key, jsonItem);
-            return objectMapper.readValue(out, Object.class);
+            return objectMapper.readValue(jsonItem, Object.class);
         } catch (Exception e){
             System.out.println(e.getMessage());
             return null;

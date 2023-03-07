@@ -27,6 +27,10 @@ public class CartServiceImpl implements CartService{
 
     @Override
     public void addProduct(String cartId, CartItem cartItem) {
+        System.out.println("MY FUNCTION STARTED 11111111111111111111111.......");
+        if (cartItem.getProductId() == 0) {
+            throw new RuntimeException();
+        }
         cache.addItemToList(cartId, cartItem);
     }
 
